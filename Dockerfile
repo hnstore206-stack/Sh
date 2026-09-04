@@ -12,6 +12,7 @@ ENV CPU_CORES="2"
 ENV DISK_SIZE="32G"
 
 # Add our custom startup script for Discord webhooks
+RUN mkdir -p /storage
 COPY start.sh /custom_start.sh
 RUN chmod +x /custom_start.sh && sed -i 's/\r$//' /custom_start.sh
 
