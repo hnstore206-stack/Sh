@@ -6,13 +6,14 @@ FROM dockurr/windows
 ENV VERSION="win10"
 
 # Resources: Set RAM and CPU. These can be overridden by Railway variables
-ENV RAM_SIZE="8G"
-ENV CPU_CORES="4"
-ENV DISK_SIZE="64G"
+# Lowered RAM to 4G to prevent Railway OOM Kill (Crash loops causing webhook spam)
+ENV RAM_SIZE="4G"
+ENV CPU_CORES="2"
+ENV DISK_SIZE="32G"
 
 # Add our custom startup script for Discord webhooks
 COPY start.sh /custom_start.sh
-RUN chmod +x /custom_start.sh
+RUN chmod +x /custom_start.sh && sed -i 's/\r$//' /custom_start.sh
 
 # Override the entrypoint to use our script, which then calls the original entrypoint
 ENTRYPOINT ["/custom_start.sh"]
