@@ -35,9 +35,6 @@ cleanup() {
 
 trap cleanup TERM INT QUIT
 
-# Create storage directory at runtime if Railway dropped it
-mkdir -p /storage
-
 # Run the original dockur/windows entrypoint in the background
 /usr/bin/tini -s -- /run/entry.sh &
 child=$!
