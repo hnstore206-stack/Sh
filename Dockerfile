@@ -1,4 +1,4 @@
-FROM dockur/windows
+FROM dockurr/windows
 
 # Windows Version: win10 (Tiny10 is sometimes used by dockur for low spec, but default win10 is standard)
 # Tiny10 might be lighter, dockur/windows supports "tiny10" as version if we want to be as light as possible.
